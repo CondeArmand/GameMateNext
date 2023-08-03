@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        aliceblue: {
+          50: "#e6f5ff",
+        },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
@@ -15,4 +19,5 @@ module.exports = {
     },
   },
   plugins: [],
+  }
 }
