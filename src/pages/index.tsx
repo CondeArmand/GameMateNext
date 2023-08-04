@@ -1,6 +1,6 @@
 import useAuth from "@/hooks/useAuth";
 import {FormEvent, useRef} from "react";
-
+import ExibirSenha from "../components/VerSenha";
 export default function Home() {
 
     const {login} = useAuth();
@@ -20,7 +20,7 @@ export default function Home() {
         <section className="h-screen">
             <div className="container h-full px-6 py-24">
                 <div
-                    className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
+                    className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between ">
 
                     <div className="mb-12 md:mb-0 md:w-8/12 lg:w-6/12">
                         <header className="flex flex-col gap-4 w-full max-w-[350px] pl-16">
@@ -34,13 +34,13 @@ export default function Home() {
                     </div>
 
 
-                    <div className="md:w-8/12 lg:ml-6 lg:w-5/12 ">
+                    <div className="md:w-8/12 lg:ml-6 lg:w-5/12 h-max">
                         <form>
 
                             <div className="relative mb-6" data-te-input-wrapper-init="">
                                 <input
                                     type="text"
-                                    className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 border-b-2 border-aliceblue-50"
+                                    className="peer block min-h-[auto] w-full  border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 border-b-2 border-aliceblue-50"
                                     id="email"
                                     placeholder="Seu email"
                                     ref={emailRef}
@@ -54,13 +54,10 @@ export default function Home() {
 
 
                             <div className="relative mb-6" data-te-input-wrapper-init="">
-                                <input
-                                    type="password"
-                                    className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 dark:peer-focus:text-primary opacity-0.8 border-b-2 border-aliceblue-50"
-                                    id="password"
-                                    placeholder="Senha"
-                                    ref={passwordRef}
-                                />
+                                
+                                
+                            <ExibirSenha />
+                               
                                 <label
                                     htmlFor="exampleFormControlInput33"
                                     className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.80rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out translate-y-[-2rem]  dark:text-neutral-200 dark:peer-focus:text-primary"
@@ -74,7 +71,7 @@ export default function Home() {
 
                                 <a
                                     href="#!"
-                                    className="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+                                    className="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600 hover:underline focus:underline active:underline"
                                 >Esqueceu a senha?</a
                                 >
                             </div>
