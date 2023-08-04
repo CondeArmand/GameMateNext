@@ -3,6 +3,7 @@ import {useRef, useState, SetStateAction} from "react";
 import Image from "next/image";
 import ExibirSenha from "../components/VerSenha";
 import FormularioCadastro from "../components/Cadastro";
+import Link from "next/link";
 
 
 export default function Cadastro() {
@@ -66,7 +67,7 @@ export default function Cadastro() {
 
                                 <input
                                     type="text"
-                                    className="peer block min-h-[auto] w-full  border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 border-b-2 border-aliceblue-50"
+                                    className="peer block min-h-[auto] w-full  border-0 bg-transparent px-3 py-[0.5rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 border-b-2 border-aliceblue-50"
                                     id="email"
                                     placeholder="Seu email"
                                     ref={emailRef}
@@ -82,10 +83,10 @@ export default function Cadastro() {
                             <div className="relative mb-6" data-te-input-wrapper-init="">
 
 
-                                <ExibirSenha inputLabelName={'senha'} onChange={handlePasswordChange}/>
+                                <ExibirSenha inputLabelName={'Senha'} onChange={handlePasswordChange}/>
 
 
-                                <ExibirSenha inputLabelName={'confirmar senha'} onChange={handleConfirmPasswordChange}/>
+                                <ExibirSenha inputLabelName={'Confirmar senha'} onChange={handleConfirmPasswordChange}/>
 
 
                             </div>
@@ -101,8 +102,8 @@ export default function Cadastro() {
                                 Continuar
                             </button>
 
-                            <p className="p-4">Já tem uma conta? <a className="text-blue-500" href="#">Faça seu login
-                                aqui</a></p>
+                            <p className="p-4">Já tem uma conta? <Link className="text-blue-500" href="/">Faça seu login
+                                aqui</Link></p>
 
 
                         </form>

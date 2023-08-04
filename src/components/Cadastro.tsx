@@ -3,6 +3,8 @@ import React from 'react';
 const FormularioCadastro: React.FC = () => {
     return (
         <div>
+
+            
             <div className="relative mb-6" data-te-input-wrapper-init="">
                 <input
                     type="text"
@@ -12,7 +14,7 @@ const FormularioCadastro: React.FC = () => {
                 />
                 <label
                     htmlFor="nome"
-                    className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out translate-y-[-2.5rem] dark:text-neutral-200 dark:peer-focus:text-primary"
+                    className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.80rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out translate-y-[-2rem] dark:text-neutral-200 dark:peer-focus:text-primary"
                 >
                     Nome
                 </label>
@@ -27,7 +29,7 @@ const FormularioCadastro: React.FC = () => {
                 />
                 <label
                     htmlFor="nomeUsuario"
-                    className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out translate-y-[-2.5rem] dark:text-neutral-200 dark:peer-focus:text-primary"
+                    className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.80rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out translate-y-[-2rem] dark:text-neutral-200 dark:peer-focus:text-primary"
                 >
                     Nome de usuário
                 </label>
