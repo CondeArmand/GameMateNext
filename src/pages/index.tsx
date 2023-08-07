@@ -1,29 +1,43 @@
 import useAuth from "@/hooks/useAuth";
-import {FormEvent, useRef} from "react";
+import {FormEvent, useRef, useState} from "react";
 import ExibirSenha from "../components/VerSenha";
 import Link from "next/link";
-import Cadastro from "./cadastro";
 import GoogleButton from "@/components/Google";
+import Meta from "@/components/meta";
 
 
 
 export default function Home() {
 
-    const {login} = useAuth();
+    const {
+        login,
+        loginOrRegisterWithGoogle
+    } = useAuth();
+
     const emailRef = useRef<HTMLInputElement>(null);
-    const passwordRef = useRef<HTMLInputElement>(null);
+    const [password, setPassword] = useState('');
+
+    const handlePasswordChange = (newPassword: string) => {
+        setPassword(newPassword)
+    }
 
     async function handleLogin(event: FormEvent) {
         event.preventDefault();
-
         const email = emailRef.current?.value as string;
-        const password = passwordRef.current?.value as string;
 
         await login(email, password);
     }
 
+    async function handleLoginWithGoogle() {
+        console.log('clicou')
+        await loginOrRegisterWithGoogle();
+    }
+
+
     return (
+
         <section className="h-screen">
+            <Meta></Meta>
             <div className="container h-full px-6 py-24">
                 <div
                     className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between ">
@@ -49,6 +63,7 @@ export default function Home() {
                                     className="peer block min-h-[auto] w-full  border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 border-b-2 border-aliceblue-50"
                                     id="email"
                                     placeholder="Seu email"
+                                    autoComplete={'email'}
                                     ref={emailRef}
                                 />
                                 <label
@@ -60,15 +75,10 @@ export default function Home() {
 
 
                             <div className="relative mb-6" data-te-input-wrapper-init="">
-                                
-                                
-                            <ExibirSenha />
-                               
-                                <label
-                                    htmlFor="exampleFormControlInput33"
-                                    className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.80rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out translate-y-[-2rem]  dark:text-neutral-200 dark:peer-focus:text-primary"
-                                >Senha
-                                </label>
+
+
+                                <ExibirSenha inputLabelName={'senha'} onChange={handlePasswordChange}/>
+
                             </div>
 
 
@@ -105,16 +115,21 @@ export default function Home() {
                             <div
                                 className=" bg-aliceblue-50 mb-3 flex w-full items-center justify-center rounded bg-primary px-7 pb-2.5 pt-3 text-center text-sm font-medium uppercase leading-normal text-black shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
 
-                               
+
                                 role="button"
                                 data-te-ripple-init=""
-                                data-te-ripple-color="light">
+                                data-te-ripple-color="light"
+                                onClick={handleLoginWithGoogle}
+                            >
 
 
-                            <GoogleButton/>
+
+
+                                <GoogleButton/>
                             </div>
-                            <h3 className="flex justify-center items-center gap-1">Ou se preferir <Link href="./cadastro" className="font-bold">Cadastre-se</Link></h3>
-                            
+                            <h3 className="flex justify-center items-center gap-1">Ou se preferir <Link
+                                href="./cadastro" className="font-bold">Cadastre-se</Link></h3>
+
                         </form>
                     </div>
                 </div>

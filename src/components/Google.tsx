@@ -1,6 +1,6 @@
-
 import { FcGoogle } from 'react-icons/fc'
 import { Button, Center, Text } from '@chakra-ui/react'
+
 
 export default function GoogleButton() {
   return (

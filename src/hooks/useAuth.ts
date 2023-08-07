@@ -1,10 +1,17 @@
 import {auth} from "@/firebase/firebase";
 import {
     signInWithEmailAndPassword,
-    createUserWithEmailAndPassword
+    createUserWithEmailAndPassword,
+    GoogleAuthProvider,
+    signInWithPopup
+
 } from "@firebase/auth";
 
+// Define o idioma padrão do auth
+auth.useDeviceLanguage();
+
 export default function useAuth() {
+
     // Funções de ‘login’
     async function login(email: string, password: string) {
         try {
@@ -21,6 +28,7 @@ export default function useAuth() {
             }
         }
     }
+
 
     // Funções de ‘cadastro’
     async function register(email: string, password: string) {
@@ -41,9 +49,35 @@ export default function useAuth() {
         }
     }
 
+    //Função de ‘login’/cadastro' com o google
+    const provider = new GoogleAuthProvider();
+
+    async function loginOrRegisterWithGoogle() {
+        console.log("login with google")
+        try {
+            await signInWithPopup(auth, provider)
+        } catch (e: any) {
+            console.log(e.code)
+            if (e.code === "auth/account-exists-with-different-credential") {
+                console.log("account exists with different credential")
+            } else if (e.code === "auth/invalid-credential") {
+                console.log("invalid credential")
+            } else if (e.code === "auth/operation-not-allowed") {
+                console.log("operation not allowed")
+            } else if (e.code === "auth/user-disabled") {
+                console.log("user disabled")
+            } else if (e.code === "auth/user-not-found") {
+                console.log("user not found")
+            } else if (e.code === "auth/wrong-password") {
+                console.log("wrong password")
+            }
+        }
+    }
+
 
     return {
         login,
-        register
+        register,
+        loginOrRegisterWithGoogle
     }
 }

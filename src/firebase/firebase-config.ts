@@ -1,10 +1,10 @@
 const firebaseConfig = {
-    apiKey: "AIzaSyCUEjaxTQvd6TlXkUtiTwiKGtiyP-QAdq8",
-    authDomain: "gamematev1.firebaseapp.com",
-    projectId: "gamematev1",
-    storageBucket: "gamematev1.appspot.com",
-    messagingSenderId: "800544016447",
-    appId: "1:800544016447:web:0d32938171ff1b153c108a"
+    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECTID,
+    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDERID,
+    appId: process.env.NEXT_PUBLIC_FIREBASE_APPID,
 };
 
 // Initialize Firebase
