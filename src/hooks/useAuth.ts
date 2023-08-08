@@ -55,7 +55,8 @@ export default function useAuth() {
     async function loginOrRegisterWithGoogle() {
         console.log("login with google")
         try {
-            await signInWithPopup(auth, provider)
+            const res = await signInWithPopup(auth, provider)
+            console.log(res.user)
         } catch (e: any) {
             console.log(e.code)
             if (e.code === "auth/account-exists-with-different-credential") {
