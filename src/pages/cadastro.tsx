@@ -1,8 +1,8 @@
 import useAuth from "@/hooks/useAuth";
 import {useRef, useState, SetStateAction} from "react";
 import Image from "next/image";
-import ExibirSenha from "../components/VerSenha";
-import FormularioCadastro from "../components/Cadastro";
+import ExibirSenha from "../components/ExibirSenha";
+import FormularioCadastro from "../components/FormularioCadastro";
 import Link from "next/link";
 
 

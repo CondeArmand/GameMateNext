@@ -1,8 +1,8 @@
 import useAuth from "@/hooks/useAuth";
 import {FormEvent, useRef, useState} from "react";
-import ExibirSenha from "../components/VerSenha";
+import ExibirSenha from "../components/ExibirSenha";
 import Link from "next/link";
-import GoogleButton from "@/components/Google";
+import GoogleButton from "@/components/GoogleButton";
 
 
 
