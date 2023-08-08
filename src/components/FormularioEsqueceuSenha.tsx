@@ -10,6 +10,7 @@ import {
   Text,
   useColorModeValue,
 } from '@chakra-ui/react'
+import Link from 'next/link'
 
 type ForgotPasswordFormInputs = {
   email: string
@@ -52,6 +53,10 @@ export default function FormularioEsqueceuSenha() {
             <Button className="bg-gray-400  text-white font-bold py-2 px-4 mt-2 rounded-sm">
       Enviar
     </Button>
+    <Link href="/" className="text-sm text-white  hover:underline pt-2 flex justify-end items-center px-2" >
+    
+   Voltar para o login
+    </Link>
         </Stack>
       </Stack>
     </Flex>
