@@ -1,10 +1,10 @@
 import * as React from 'react';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import FolderIcon from '@mui/icons-material/Folder';
-import RestoreIcon from '@mui/icons-material/Restore';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
+
+import PersonIcon from '@mui/icons-material/Person';
+import HomeIcon from '@mui/icons-material/Home';
+import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 
 export default function LabelBottomNavigation() {
   const [value, setValue] = React.useState('recents');
@@ -27,25 +27,21 @@ export default function LabelBottomNavigation() {
       onChange={handleChange}
     >
       <BottomNavigationAction
-        label="Recents"
-        value="recents"
-        icon={<RestoreIcon />}
+        label="Biblioteca"
+        value="biblioteca"
+        icon={<SportsEsportsIcon />}
       />
       <BottomNavigationAction
-        label="Favorites"
-        value="favorites"
-        icon={<FavoriteIcon />}
+        label="Home"
+        value="home"
+        icon={<HomeIcon />}
       />
       <BottomNavigationAction
-        label="Nearby"
-        value="nearby"
-        icon={<LocationOnIcon />}
+        label="Perfil"
+        value="perfil"
+        icon={<PersonIcon />}
       />
-      <BottomNavigationAction
-        label="Folder"
-        value="folder"
-        icon={<FolderIcon />}
-      />
+      
     </BottomNavigation>
   );
 }

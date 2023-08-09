@@ -20,7 +20,10 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import Image from 'next/image';
-
+import HomeIcon from '@mui/icons-material/Home';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import PersonIcon from '@mui/icons-material/Person';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 
 const drawerWidth = 240;
 
@@ -45,18 +48,23 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
+  
 }
 
 const AppBar = styled(MuiAppBar, {
+  
   shouldForwardProp: (prop) => prop !== 'open',
+  
 })<AppBarProps>(({ theme, open }) => ({
   transition: theme.transitions.create(['margin', 'width'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
+    
   }),
   ...(open && {
     width: `calc(100% - ${drawerWidth}px)`,
     marginLeft: `${drawerWidth}px`,
+    
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
@@ -88,7 +96,7 @@ export default function PersistentDrawerLeft() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar position="fixed" open={open} className='bg-aliceblue-50'>
         <Toolbar className='flex justify-between'>
           <IconButton
             
@@ -101,7 +109,7 @@ export default function PersistentDrawerLeft() {
             
           </IconButton>
           <Image src="/gamemate.png" alt="Logo" width={150} height={150}  />
-          <SearchIcon className='text-black'/>
+          <SearchIcon className='text-black cursor-pointer'/>
          
             
             
@@ -127,32 +135,23 @@ export default function PersistentDrawerLeft() {
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </DrawerHeader>
-        <Divider />
-        <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+      <List>
+  {['Home', 'Biblioteca', 'Perfil', 'Sair'].map((text, index) => (
+    <ListItem key={text} disablePadding>
+      <ListItemButton>
+        <ListItemIcon>
+          {index === 0 ? <HomeIcon /> : 
+           index === 1 ? <LibraryBooksIcon /> : 
+           index === 2 ? <PersonIcon /> : 
+           <ExitToAppIcon />}
+        </ListItemIcon>
+        <ListItemText primary={text} />
+      </ListItemButton>
+    </ListItem>
+  ))}
+</List>
+
+       
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
