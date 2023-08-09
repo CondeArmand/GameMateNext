@@ -47,15 +47,7 @@ export default function useAuth() {
             const res = await createUserWithEmailAndPassword(auth, email, password)
             const user = res.user
 
-            const player = new Player(
-                user.uid,
-                name,
-                username,
-                email,
-                user.photoURL,
-                [],
-                []
-            )
+            const player = new Player(user.uid, name, username, email, user.photoURL, [], [])
 
             await addDoc(collection(db, "players"), {
                 player: player.toJSON()
@@ -80,10 +72,24 @@ export default function useAuth() {
     const provider = new GoogleAuthProvider();
 
     async function loginOrRegisterWithGoogle() {
-        console.log("login with google")
         try {
+
             const res = await signInWithPopup(auth, provider)
-            console.log(res.user)
+            const user = res.user
+            const player = new Player(
+                user.uid,
+                user.displayName,
+                '',
+                user.email,
+                user.photoURL,
+                [],
+                []
+            )
+
+            await addDoc(collection(db, "players"), {
+                player: player.toJSON()
+            })
+
         } catch (e: any) {
             console.log(e.code)
             if (e.code === "auth/account-exists-with-different-credential") {

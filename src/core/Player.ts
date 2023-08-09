@@ -7,7 +7,7 @@ export default class Player {
     private _friends: string[];
     private _games: string[];
 
-    constructor(id: string = '', name: string, username: string, email: string, photo?: string | null, friends: string[] = [], games: string[] = []) {
+    constructor(id: string = '', name: string | null, username: string, email: string | null, photo?: string | null, friends: string[] = [], games: string[] = []) {
         this._id = id;
         this._name = name;
         this._username = username;
