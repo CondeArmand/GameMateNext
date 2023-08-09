@@ -1,8 +1,8 @@
 export default class Player {
     private _id: string;
-    private _name: string;
+    private _name: string | null;
     private _username: string;
-    private _email: string;
+    private _email: string | null;
     private _photo: string | null | undefined;
     private _friends: string[];
     private _games: string[];
@@ -42,7 +42,7 @@ export default class Player {
     }
 
     get name(): string {
-        return this._name;
+        return <string>this._name;
     }
 
     set name(value: string) {
@@ -58,7 +58,7 @@ export default class Player {
     }
 
     get email(): string {
-        return this._email;
+        return <string>this._email;
     }
 
     set email(value: string) {
