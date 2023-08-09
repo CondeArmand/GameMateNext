@@ -1,13 +1,9 @@
-
-
-
 import useAuth from "@/hooks/useAuth";
-import {useRef, useState, SetStateAction} from "react";
+import {SetStateAction, useRef, useState} from "react";
 import Image from "next/image";
 import ExibirSenha from "../components/ExibirSenha";
 import FormularioCadastro from "../components/FormularioCadastro";
 import Link from "next/link";
-import Player from "@/core/Player";
 import Loading from "@/components/loading";
 
 
@@ -62,7 +58,7 @@ export default function Cadastro() {
 
         try {
             await register(name, username, email, password);
-        } catch (error : any) {
+        } catch (error: any) {
             console.log(error.message);
         } finally {
             loading(false);

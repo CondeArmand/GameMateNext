@@ -1,17 +1,12 @@
-
 import {auth, db} from "@/firebase/firebase";
 import {
-    signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
     GoogleAuthProvider,
-    signInWithPopup,
-    sendPasswordResetEmail
+    sendPasswordResetEmail,
+    signInWithEmailAndPassword,
+    signInWithPopup
 } from "@firebase/auth";
-import {
-    collection,
-    getDocs,
-    getDoc, addDoc,
-} from "firebase/firestore";
+import {addDoc, collection,} from "firebase/firestore";
 import Player from "@/core/Player";
 
 // Define o idioma padrão do auth
@@ -36,7 +31,6 @@ export default function useAuth() {
             }
         }
     }
-
 
 
     // Funções de ‘cadastro’

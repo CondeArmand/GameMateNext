@@ -28,7 +28,7 @@ const FormularioCadastro: React.FC<FormularioCadastroProps> = ({onChangeName, on
     return (
         <div>
 
-            
+
             <div className="relative mb-6" data-te-input-wrapper-init="">
                 <input
                     type="text"

@@ -1,8 +1,8 @@
 import FormularioEsqueceuSenha from "@/components/FormularioEsqueceuSenha";
 
-export default function EsqueceuSenha(){
+export default function EsqueceuSenha() {
 
-    return(
-        <FormularioEsqueceuSenha />
+    return (
+        <FormularioEsqueceuSenha/>
     )
 }
