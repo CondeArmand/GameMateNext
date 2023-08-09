@@ -37,12 +37,6 @@ export default function useAuth() {
         }
     }
 
-    async function testarFirestore() {
-        const querySnapshot = await getDocs(collection(db, "games"));
-        querySnapshot.forEach((doc) => {
-            console.log(doc.id, " => ", doc.data());
-        });
-    }
 
 
     // Funções de ‘cadastro’
@@ -50,20 +44,20 @@ export default function useAuth() {
 
         try {
 
-            // const res = await createUserWithEmailAndPassword(auth, email, password)
-            // const user = res.user
+            const res = await createUserWithEmailAndPassword(auth, email, password)
+            const user = res.user
 
             const player = new Player(
-                "user.uid",
+                user.uid,
                 name,
                 username,
                 email,
-                "user.photoURL",
+                user.photoURL,
                 [],
                 []
             )
-            console.log(player.toJSON())
-            await addDoc(collection(db, "player"), {
+
+            await addDoc(collection(db, "players"), {
                 player: player.toJSON()
             })
             alert("Cadastro realizado com sucesso!")
@@ -130,6 +124,5 @@ export default function useAuth() {
         register,
         loginOrRegisterWithGoogle,
         forgotPassword,
-        testarFirestore
     }
 }

@@ -13,7 +13,7 @@ import Loading from "@/components/loading";
 
 export default function Cadastro() {
 
-    const {register, testarFirestore} = useAuth();
+    const {register} = useAuth();
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -58,11 +58,10 @@ export default function Cadastro() {
             return alert('A senha deve ter no mínimo 6 caracteres');
         }
 
-        // loading(true);
+        loading(true);
 
         try {
-            // await register(name, username, email, password);
-            await testarFirestore();
+            await register(name, username, email, password);
         } catch (error : any) {
             console.log(error.message);
         } finally {
@@ -136,15 +135,6 @@ export default function Cadastro() {
                             <p className="p-4">Já tem uma conta? <Link className="text-blue-500" href="/">Faça seu login
                                 aqui</Link></p>
 
-                            <button
-                                type="button"
-                                className="bg-gray-400 inline-block w-full rounded bg-primary px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-black shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-                                data-te-ripple-init=""
-                                data-te-ripple-color="light"
-                                onClick={testarFirestore}
-                            >
-                                Testar Firestore
-                            </button>
                         </form>
                     </div>
                 </div>
