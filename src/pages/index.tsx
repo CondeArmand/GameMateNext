@@ -106,7 +106,7 @@ export default function Home() {
                             <div className="relative mb-6" data-te-input-wrapper-init="">
 
 
-                                <ExibirSenha inputLabelName={'senha'} onChange={handlePasswordChange}/>
+                                <ExibirSenha inputLabelName={'Senha'} onChange={handlePasswordChange}/>
 
                             </div>
 
