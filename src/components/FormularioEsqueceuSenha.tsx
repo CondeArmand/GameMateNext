@@ -5,6 +5,7 @@ import Link from 'next/link'
 import {useRef, useState} from "react";
 import useAuth from "@/hooks/useAuth";
 import Loading from "@/components/loading";
+import {SweetAlerts} from "@/components/SweetAlerts";
 
 
 export default function FormularioEsqueceuSenha() {
@@ -25,10 +26,13 @@ export default function FormularioEsqueceuSenha() {
         loading(true);
 
         try {
-            await forgotPassword(emailRef.current?.value);
-        } catch (error) {
-            console.log(error);
-            alert('Erro ao enviar email')
+            const res = await forgotPassword(emailRef.current?.value);
+            if (res !== 'Sucess') {
+                throw new Error(res?.valueOf());
+            }
+            await SweetAlerts('success', 'Sucesso', 'Email enviado com sucesso!');
+        } catch (error: any) {
+            await SweetAlerts('error', 'Erro', error.message);
         } finally {
             loading(false);
         }

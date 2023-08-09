@@ -5,6 +5,7 @@ import ExibirSenha from "../components/ExibirSenha";
 import FormularioCadastro from "../components/FormularioCadastro";
 import Link from "next/link";
 import Loading from "@/components/loading";
+import {SweetAlerts} from "@/components/SweetAlerts";
 
 
 export default function Cadastro() {
@@ -47,19 +48,24 @@ export default function Cadastro() {
         const email = emailRef.current?.value as string;
 
         if (!email || !password || !confirmPassword || !name || !username) {
-            return alert('Preencha todos os campos');
+            return await SweetAlerts('error', 'Erro', 'Preencha todos os campos!');
         } else if (password !== confirmPassword) {
-            return alert('As senhas não coincidem');
+            return await SweetAlerts('error', 'Erro', 'As senhas não coincidem!');
         } else if (password.length < 6) {
-            return alert('A senha deve ter no mínimo 6 caracteres');
+            return await SweetAlerts('error', 'Erro', 'A senha deve ter no mínimo 6 caracteres!');
         }
 
         loading(true);
 
         try {
-            await register(name, username, email, password);
+            const res = await register(name, username, email, password);
+            if (res !== 'Sucess') {
+                throw new Error(res);
+            }
+            await SweetAlerts('success', 'Sucesso', 'Cadastro realizado com sucesso!');
+            window.location.href = '/teste';
         } catch (error: any) {
-            console.log(error.message);
+            await SweetAlerts('error', 'Erro', error.message);
         } finally {
             loading(false);
         }
@@ -89,13 +95,14 @@ export default function Cadastro() {
                                 Faça seu cadastro no GameMate
                             </h1>
 
-                            <div className="relative mb-6" data-te-input-wrapper-init="">
+                            <div className="relative mb-8" data-te-input-wrapper-init="">
 
                                 <input
                                     type="text"
                                     className="peer block min-h-[auto] w-full  border-0 bg-transparent px-3 py-[0.5rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 border-b-2 border-aliceblue-50"
                                     id="email"
                                     placeholder="Seu email"
+                                    autoComplete={'email'}
                                     ref={emailRef}
                                 />
                                 <label
@@ -109,10 +116,12 @@ export default function Cadastro() {
                             <div className="relative mb-6" data-te-input-wrapper-init="">
 
 
-                                <ExibirSenha inputLabelName={'Senha'} onChange={handlePasswordChange}/>
+                                <ExibirSenha inputId={'password1'} inputLabelName={'Senha'}
+                                             onChange={handlePasswordChange}/>
 
 
-                                <ExibirSenha inputLabelName={'Confirmar senha'} onChange={handleConfirmPasswordChange}/>
+                                <ExibirSenha inputId={'password2'} inputLabelName={'Confirmar senha'}
+                                             onChange={handleConfirmPasswordChange}/>
 
 
                             </div>
@@ -129,7 +138,8 @@ export default function Cadastro() {
                             </button>
 
                             <p className="p-4">Já tem uma conta? <Link className="text-blue-500" href="/">Faça seu login
-                                aqui</Link></p>
+                                aqui</Link>
+                            </p>
 
                         </form>
                     </div>

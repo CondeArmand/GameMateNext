@@ -4,7 +4,7 @@ import ExibirSenha from "../components/ExibirSenha";
 import Link from "next/link";
 import GoogleButton from "@/components/GoogleButton";
 import Loading from "@/components/loading";
-
+import {SweetAlerts} from "@/components/SweetAlerts";
 
 export default function Home() {
 
@@ -30,7 +30,7 @@ export default function Home() {
         event.preventDefault();
 
         if (!emailRef.current?.value || !passwordRef) {
-            return alert('Preencha todos os campos');
+            return SweetAlerts('error', 'Erro', 'Preencha todos os campos!');
         }
 
         loading(true);
@@ -40,9 +40,9 @@ export default function Home() {
             const password = passwordRef;
 
             await login(email, password);
+            window.location.href = '/teste';
         } catch (error) {
-            console.log(error);
-            alert('Erro ao fazer login');
+            await SweetAlerts('error', 'Erro', 'Erro ao fazer login!');
         } finally {
             loading(false);
         }
@@ -52,9 +52,9 @@ export default function Home() {
         loading(true)
         try {
             await loginOrRegisterWithGoogle();
+            window.location.href = '/teste';
         } catch (error) {
-            console.log(error);
-            alert('Erro ao fazer login');
+            await SweetAlerts('error', 'Erro', 'Erro ao fazer login com o Google!');
         } finally {
             loading(false);
         }
@@ -89,7 +89,23 @@ export default function Home() {
                             <div className="relative mb-6" data-te-input-wrapper-init="">
                                 <input
                                     type="text"
-                                    className="peer block min-h-[auto] w-full  border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 border-b-2 border-aliceblue-50"
+                                    className="peer block min-h-[auto]
+                                    w-full
+                                    border-0
+                                    bg-transparent
+                                     px-3
+                                      py-[0.32rem]
+                                       leading-[2.15]
+                                        outline-none
+                                         transition-all
+                                          duration-200 ease-linear
+                                           focus:placeholder:opacity-100
+                                            data-[te-input-state-active]:placeholder:opacity-100
+                                             motion-reduce:transition-none
+                                              dark:text-neutral-200
+                                               dark:placeholder:text-neutral-200
+                                                [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0
+                                                 border-b-2 border-aliceblue-50"
                                     id="email"
                                     placeholder="Seu email"
                                     autoComplete={'email'}
@@ -156,6 +172,7 @@ export default function Home() {
                             </div>
                             <h3 className="flex justify-center items-center gap-1">Ou se preferir <Link
                                 href="./cadastro" className="font-bold">Cadastre-se</Link></h3>
+
 
                         </form>
                     </div>

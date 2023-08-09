@@ -46,18 +46,16 @@ export default function useAuth() {
             await addDoc(collection(db, "players"), {
                 player: player.toJSON()
             })
-            alert("Cadastro realizado com sucesso!")
+
+            return 'Sucess'
 
         } catch (e: any) {
             if (e.code === "auth/email-already-in-use") {
-                console.log("email already in use")
-                alert("Email já cadastrado!")
+                return 'Email já cadastrado!'
             } else if (e.code === "auth/invalid-email") {
-                console.log("invalid email")
-                alert("Email inválido!")
+                return 'Email inválido!'
             } else if (e.code === "auth/weak-password") {
-                console.log("weak password")
-                alert("Senha fraca! Deve ter mais de 6 caracteres.")
+                return 'Senha fraca!'
             }
         }
     }
@@ -106,14 +104,12 @@ export default function useAuth() {
     async function forgotPassword(email: string) {
         try {
             await sendPasswordResetEmail(auth, email)
-            alert("Email enviado com sucesso!")
+            return 'Sucess'
         } catch (e: any) {
             if (e.code === "auth/invalid-email") {
-                console.log("invalid email")
-                alert("Email inválido!")
+                return 'Email inválido!'
             } else if (e.code === "auth/user-not-found") {
-                console.log("user not found")
-                alert("Usuário não encontrado!")
+                return 'Usuário não encontrado!'
             }
         }
     }
