@@ -1,16 +1,24 @@
-import {auth} from "@/firebase/firebase";
+
+import {auth, db} from "@/firebase/firebase";
 import {
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
     GoogleAuthProvider,
-    signInWithPopup
-
+    signInWithPopup,
+    sendPasswordResetEmail
 } from "@firebase/auth";
+import {
+    collection,
+    getDocs,
+    getDoc, addDoc,
+} from "firebase/firestore";
+import Player from "@/core/Player";
 
 // Define o idioma padrão do auth
 auth.useDeviceLanguage();
 
 export default function useAuth() {
+
 
     // Funções de ‘login’
     async function login(email: string, password: string) {
@@ -29,12 +37,37 @@ export default function useAuth() {
         }
     }
 
+    async function testarFirestore() {
+        const querySnapshot = await getDocs(collection(db, "games"));
+        querySnapshot.forEach((doc) => {
+            console.log(doc.id, " => ", doc.data());
+        });
+    }
+
 
     // Funções de ‘cadastro’
-    async function register(email: string, password: string) {
+    async function register(name: string, username: string, email: string, password: string) {
+
         try {
-            await createUserWithEmailAndPassword(auth, email, password)
+
+            // const res = await createUserWithEmailAndPassword(auth, email, password)
+            // const user = res.user
+
+            const player = new Player(
+                "user.uid",
+                name,
+                username,
+                email,
+                "user.photoURL",
+                [],
+                []
+            )
+            console.log(player.toJSON())
+            await addDoc(collection(db, "player"), {
+                player: player.toJSON()
+            })
             alert("Cadastro realizado com sucesso!")
+
         } catch (e: any) {
             if (e.code === "auth/email-already-in-use") {
                 console.log("email already in use")
@@ -75,10 +108,28 @@ export default function useAuth() {
         }
     }
 
+    // Função de ‘esqueci minha senha’
+    async function forgotPassword(email: string) {
+        try {
+            await sendPasswordResetEmail(auth, email)
+            alert("Email enviado com sucesso!")
+        } catch (e: any) {
+            if (e.code === "auth/invalid-email") {
+                console.log("invalid email")
+                alert("Email inválido!")
+            } else if (e.code === "auth/user-not-found") {
+                console.log("user not found")
+                alert("Usuário não encontrado!")
+            }
+        }
+    }
+
 
     return {
         login,
         register,
-        loginOrRegisterWithGoogle
+        loginOrRegisterWithGoogle,
+        forgotPassword,
+        testarFirestore
     }
 }

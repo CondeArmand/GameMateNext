@@ -1,6 +1,30 @@
 import React from 'react';
 
-const FormularioCadastro: React.FC = () => {
+interface FormularioCadastroProps {
+    onChangeName?: (name: string) => void;
+    onChangeUser?: (username: string) => void;
+}
+
+const FormularioCadastro: React.FC<FormularioCadastroProps> = ({onChangeName, onChangeUser}) => {
+
+    const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const name = e.target.value;
+        if (onChangeName) {
+            onChangeName(name);
+        } else {
+            console.warn('Você precisa passar a prop onChange para o componente ExibirSenha');
+        }
+    }
+
+    const handleUserChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const username = e.target.value;
+        if (onChangeUser) {
+            onChangeUser(username);
+        } else {
+            console.warn('Você precisa passar a prop onChange para o componente ExibirSenha');
+        }
+    }
+
     return (
         <div>
 
@@ -11,6 +35,7 @@ const FormularioCadastro: React.FC = () => {
                     className="peer block min-h-[auto] w-full border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 border-b-2 border-aliceblue-50"
                     id="nome"
                     placeholder="Seu nome"
+                    onChange={handleNameChange}
                 />
                 <label
                     htmlFor="nome"
@@ -26,6 +51,7 @@ const FormularioCadastro: React.FC = () => {
                     className="peer block min-h-[auto] w-full border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 border-b-2 border-aliceblue-50"
                     id="nomeUsuario"
                     placeholder="Seu nome de usuário"
+                    onChange={handleUserChange}
                 />
                 <label
                     htmlFor="nomeUsuario"

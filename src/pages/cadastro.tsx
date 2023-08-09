@@ -1,18 +1,42 @@
+
+
+
 import useAuth from "@/hooks/useAuth";
 import {useRef, useState, SetStateAction} from "react";
 import Image from "next/image";
 import ExibirSenha from "../components/ExibirSenha";
 import FormularioCadastro from "../components/FormularioCadastro";
 import Link from "next/link";
+import Player from "@/core/Player";
+import Loading from "@/components/loading";
 
 
 export default function Cadastro() {
 
-    const {register} = useAuth();
+    const {register, testarFirestore} = useAuth();
 
+    const [isLoading, setIsLoading] = useState(false);
+
+    function loading(value: boolean = false) {
+        setIsLoading(value)
+    }
+
+    // Registro
+
+    const [name, setName] = useState('');
+    const [username, setUsername] = useState('');
     const emailRef = useRef<HTMLInputElement>(null);
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+
+
+    const handleNameChange = (newName: SetStateAction<string>) => {
+        setName(newName);
+    }
+
+    const handleUsernameChange = (newUsername: SetStateAction<string>) => {
+        setUsername(newUsername);
+    }
 
     const handlePasswordChange = (newPassword: SetStateAction<string>) => {
         setPassword(newPassword);
@@ -22,25 +46,33 @@ export default function Cadastro() {
         setConfirmPassword(newPassword2);
     }
 
+
     async function handleRegister() {
         const email = emailRef.current?.value as string;
-        try {
-            if (password !== confirmPassword || password === '' || confirmPassword === '') {
-                console.log(password, confirmPassword)
-                alert('As senhas não coincidem');
-            } else {
-                await register(email, password);
-            }
-        } catch (error : any) {
-            console.log(error.message);
+
+        if (!email || !password || !confirmPassword || !name || !username) {
+            return alert('Preencha todos os campos');
+        } else if (password !== confirmPassword) {
+            return alert('As senhas não coincidem');
+        } else if (password.length < 6) {
+            return alert('A senha deve ter no mínimo 6 caracteres');
         }
 
+        // loading(true);
 
-        // await register(email, password);
+        try {
+            // await register(name, username, email, password);
+            await testarFirestore();
+        } catch (error : any) {
+            console.log(error.message);
+        } finally {
+            loading(false);
+        }
     }
 
     return (
         <section className="h-screen">
+            <Loading isLoading={isLoading}/>
             <div className="container h-full px-6 py-24">
                 <div
                     className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between ">
@@ -64,7 +96,6 @@ export default function Cadastro() {
 
                             <div className="relative mb-6" data-te-input-wrapper-init="">
 
-
                                 <input
                                     type="text"
                                     className="peer block min-h-[auto] w-full  border-0 bg-transparent px-3 py-[0.5rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 border-b-2 border-aliceblue-50"
@@ -79,7 +110,7 @@ export default function Cadastro() {
                                 </label>
                             </div>
 
-                            <FormularioCadastro/>
+                            <FormularioCadastro onChangeName={handleNameChange} onChangeUser={handleUsernameChange}/>
                             <div className="relative mb-6" data-te-input-wrapper-init="">
 
 
@@ -105,7 +136,15 @@ export default function Cadastro() {
                             <p className="p-4">Já tem uma conta? <Link className="text-blue-500" href="/">Faça seu login
                                 aqui</Link></p>
 
-
+                            <button
+                                type="button"
+                                className="bg-gray-400 inline-block w-full rounded bg-primary px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-black shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                                data-te-ripple-init=""
+                                data-te-ripple-color="light"
+                                onClick={testarFirestore}
+                            >
+                                Testar Firestore
+                            </button>
                         </form>
                     </div>
                 </div>

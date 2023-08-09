@@ -3,8 +3,7 @@ import {FormEvent, useRef, useState} from "react";
 import ExibirSenha from "../components/ExibirSenha";
 import Link from "next/link";
 import GoogleButton from "@/components/GoogleButton";
-
-
+import Loading from "@/components/loading";
 
 
 export default function Home() {
@@ -15,28 +14,58 @@ export default function Home() {
     } = useAuth();
 
     const emailRef = useRef<HTMLInputElement>(null);
-    const [password, setPassword] = useState('');
+    const [passwordRef, setPassword] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const handlePasswordChange = (newPassword: string) => {
         setPassword(newPassword)
     }
 
+    function loading(value: boolean = false) {
+        setIsLoading(value)
+    }
+
+
     async function handleLogin(event: FormEvent) {
         event.preventDefault();
-        const email = emailRef.current?.value as string;
 
-        await login(email, password);
+        if (!emailRef.current?.value || !passwordRef) {
+            return alert('Preencha todos os campos');
+        }
+
+        loading(true);
+
+        try {
+            const email = emailRef.current?.value;
+            const password = passwordRef;
+
+            await login(email, password);
+        } catch (error) {
+            console.log(error);
+            alert('Erro ao fazer login');
+        } finally {
+            loading(false);
+        }
     }
 
     async function handleLoginWithGoogle() {
-        console.log('clicou')
-        await loginOrRegisterWithGoogle();
+        loading(true)
+        try {
+            await loginOrRegisterWithGoogle();
+        } catch (error) {
+            console.log(error);
+            alert('Erro ao fazer login');
+        } finally {
+            loading(false);
+        }
     }
 
 
     return (
 
         <section className="h-screen">
+
+            <Loading isLoading={isLoading}/>
 
             <div className="container h-full px-6 py-24">
                 <div
