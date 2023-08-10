@@ -35,14 +35,17 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
   transition: theme.transitions.create('margin', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
+    
   }),
   marginLeft: `-${drawerWidth}px`,
   ...(open && {
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
+      
     }),
     marginLeft: 0,
+    
   }),
 }));
 
@@ -59,6 +62,7 @@ const AppBar = styled(MuiAppBar, {
   transition: theme.transitions.create(['margin', 'width'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
+   
     
   }),
   ...(open && {
@@ -79,6 +83,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
   justifyContent: 'flex-end',
+  
 }));
 
 export default function PersistentDrawerLeft() {
@@ -93,9 +98,26 @@ export default function PersistentDrawerLeft() {
     setOpen(false);
   };
 
+  const Backdrop = styled('div')<{ open?: boolean }>(({
+    open
+  }) => ({
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    backdropFilter: 'blur(5px)',
+    visibility: open ? 'visible' : 'hidden',
+    pointerEvents: open ? 'auto' : 'none',
+    zIndex: 1000,
+    transition: 'visibility 0.3s ease-in-out',
+  }));
+
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
+      <Backdrop open={open} />
       <AppBar position="fixed" open={open} className='bg-aliceblue-50'>
         <Toolbar className='flex justify-between'>
           <IconButton
@@ -129,6 +151,7 @@ export default function PersistentDrawerLeft() {
         variant="persistent"
         anchor="left"
         open={open}
+        
       >
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>

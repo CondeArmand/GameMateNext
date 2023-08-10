@@ -11,6 +11,9 @@ module.exports = {
         aliceblue: {
           50: "#e6f5ff",
         },
+        "blue-jeans": {
+          50: "#1A202c",
+        },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
