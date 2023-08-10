@@ -24,6 +24,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import PersonIcon from '@mui/icons-material/Person';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import { blue } from '@mui/material/colors';
 
 const drawerWidth = 240;
 
@@ -118,7 +119,7 @@ export default function PersistentDrawerLeft() {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <Backdrop open={open} />
-      <AppBar position="fixed" open={open} className='bg-aliceblue-50'>
+      <AppBar position="fixed" open={open} sx={{ backgroundColor: blue[50] }}>
         <Toolbar className='flex justify-between'>
           <IconButton
             
