@@ -14,6 +14,9 @@ module.exports = {
         "blue-jeans": {
           50: "#1A202c",
         },
+        "linear": {
+          50:"linear-gradient(255deg, #1f1f1f, #2e2e2e, #3d3d3d);"
+        },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':

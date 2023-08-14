@@ -25,6 +25,7 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import PersonIcon from '@mui/icons-material/Person';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import { blue } from '@mui/material/colors';
+import SearchModal from './SearchModal';
 
 const drawerWidth = 240;
 
@@ -132,7 +133,8 @@ export default function PersistentDrawerLeft() {
             
           </IconButton>
           <Image src="/gamemate.png" alt="Logo" width={150} height={150}  />
-          <SearchIcon className='text-black cursor-pointer'/>
+          <SearchModal/>
+          
          
             
             
