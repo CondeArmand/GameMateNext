@@ -114,11 +114,25 @@ export default function useAuth() {
         }
     }
 
+    // Função de logout
+    async function logout() {
+        try {
+            await auth.signOut()
+            console.log("logged out")
+        } catch (e: any) {
+            console.log(e.code)
+            if (e.code === "auth/no-current-user") {
+                console.log("no current user")
+            }
+        }
+    }
+
 
     return {
         login,
         register,
         loginOrRegisterWithGoogle,
         forgotPassword,
+        logout
     }
 }

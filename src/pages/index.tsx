@@ -37,9 +37,7 @@ export default function Home() {
 
         try {
             const email = emailRef.current?.value;
-            const password = passwordRef;
-
-            await login(email, password);
+            await login(email, passwordRef);
             window.location.href = '/teste';
         } catch (error) {
             await SweetAlerts('error', 'Erro', 'Erro ao fazer login!');
@@ -131,7 +129,7 @@ export default function Home() {
 
 
                                 <Link
-                                    href="esqueceu"
+                                    href="/esqueceu"
                                     className="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600 hover:underline focus:underline active:underline"
                                 >Esqueceu a senha?</Link>
 
@@ -170,8 +168,9 @@ export default function Home() {
 
                                 <GoogleButton/>
                             </div>
-                            <h3 className="flex justify-center items-center gap-1">Ou se preferir <Link
-                                href="./cadastro" className="font-bold">Cadastre-se</Link></h3>
+                            <h3 className="flex justify-center items-center gap-1">Ou se preferir
+                                <Link href="/cadastro" className="font-bold">Cadastre-se</Link>
+                            </h3>
 
 
                         </form>
