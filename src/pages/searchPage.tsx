@@ -1,7 +1,7 @@
 // pages/SearchPage.tsx
 import React from 'react';
-import GameCard from '../components/GameCard';
-
+// import GameCard from '../components/GameCard';
+import SimpleCard from '../components/SimpleCard';
 
 
 const games = [
@@ -61,7 +61,7 @@ const SearchPage: React.FC = () => {
       <div className="flex flex-col min-h-screen bg-blue-jeans-50">
         <div className="flex flex-wrap justify-center md:justify-start md:overflow-x-auto overflow-y-auto m-0 p-0 ">
           {games.map((game) => (
-            <GameCard key={game.id} game={game} />
+            <SimpleCard key={game.id} game={game} />
           ))}
         </div>
         <div className='h-16'></div>
