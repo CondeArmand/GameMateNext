@@ -67,7 +67,7 @@ const SearchPage: React.FC = () => {
         <div className='h-16'></div>
       </div>
     );
-  };
+};
   
   
   export default SearchPage;

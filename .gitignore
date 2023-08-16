@@ -33,3 +33,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+.idea/inspectionProfiles/Project_Default.xml
+.gitignore
+.idea/jsLibraryMappings.xml
+.gitignore
+.idea/gamematenxt.iml
+.idea/gamematenxt.iml
+.firebaserc
+firebase.json
+.gitignore
+firestore.rules
+.gitignore
