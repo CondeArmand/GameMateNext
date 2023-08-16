@@ -19,7 +19,7 @@ export default function Carrossel({ games }: CarrosselProps) {
 
     return (
         <>
-            <Carousel cellAlign="left" slidesToShow={1}>
+            <Carousel cellAlign="left" slidesToShow={4}>
                 {games.map((game: any) => (
                     <img
                         key={game.id}

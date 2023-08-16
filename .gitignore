@@ -44,3 +44,10 @@ firebase.json
 .gitignore
 firestore.rules
 .gitignore
+firestore.indexes.json
+qodana.yaml
+.idea/vcs.xml
+.gitignore
+src/pages/IGDB_API_TEST.tsx
+src/utils/test.js
+src/utils/steam/steam.js
