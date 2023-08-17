@@ -119,6 +119,7 @@ export default function useAuth() {
         try {
             await auth.signOut()
             console.log("logged out")
+            window.location.href = '/'
         } catch (e: any) {
             console.log(e.code)
             if (e.code === "auth/no-current-user") {

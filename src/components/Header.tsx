@@ -26,6 +26,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import { blue } from '@mui/material/colors';
 import SearchModal from './SearchModal';
+import useAuth from '@/hooks/useAuth';
 
 const drawerWidth = 240;
 
@@ -89,6 +90,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function PersistentDrawerLeft() {
+
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -116,6 +118,27 @@ export default function PersistentDrawerLeft() {
   }));
 
 
+  const {logout} = useAuth();
+
+  function handleMenuClick(index: number) {
+    switch (index) {
+      case 0:
+        window.location.href = '/mainPage'
+        break;
+      case 1:
+        window.location.href = '/biblioteca'
+        break;
+      case 2:
+        console.log('Perfil')
+        break;
+      case 3:
+        logout();
+        break;
+
+    }
+  }
+
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -134,11 +157,7 @@ export default function PersistentDrawerLeft() {
           </IconButton>
           <Image src="/gamemate.png" alt="Logo" width={150} height={150}  />
           <SearchModal/>
-          
-         
             
-            
-         
         </Toolbar>
        
       </AppBar>
@@ -164,7 +183,7 @@ export default function PersistentDrawerLeft() {
       <List>
   {['Home', 'Biblioteca', 'Perfil', 'Sair'].map((text, index) => (
     <ListItem key={text} disablePadding>
-      <ListItemButton>
+      <ListItemButton onClick={() => handleMenuClick(index)}>
         <ListItemIcon>
           {index === 0 ? <HomeIcon /> : 
            index === 1 ? <LibraryBooksIcon /> : 
@@ -176,8 +195,6 @@ export default function PersistentDrawerLeft() {
     </ListItem>
   ))}
 </List>
-
-       
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
