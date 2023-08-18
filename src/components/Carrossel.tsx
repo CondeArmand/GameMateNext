@@ -41,10 +41,10 @@ export default function Carrossel({ games }: CarrosselProps) {
             
             slideIndex={initialSlideIndex} // Define o índice inicial para o slide central
             renderCenterLeftControls={({ previousSlide }) => (
-                <button onClick={previousSlide}><ArrowBackIosIcon sx={{fontSize: 35}}/></button>
+                <button onClick={previousSlide}><ArrowBackIosIcon className='text-white' sx={{fontSize: 35}}/></button>
             )}
             renderCenterRightControls={({ nextSlide }) => (
-                <button onClick={nextSlide}><ArrowForwardIosIcon sx={{fontSize: 35}}/></button>
+                <button onClick={nextSlide}><ArrowForwardIosIcon className="text-white" sx={{fontSize: 35} }/></button>
             )}
         >
             {games.map((game: Game) => (
