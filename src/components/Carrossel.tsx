@@ -36,7 +36,7 @@ export default function Carrossel({ games }: CarrosselProps) {
             cellSpacing={20}
             autoplay={true}
             wrapAround={true}
-            renderBottomCenterControls={false}
+            renderBottomCenterControls={null}
             slidesToShow={responsiveSlidesToShow.medium}
             
             slideIndex={initialSlideIndex} // Define o índice inicial para o slide central
