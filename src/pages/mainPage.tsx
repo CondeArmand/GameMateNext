@@ -1,5 +1,4 @@
-'use client'
-
+import React from "react";
 import Header from '../components/Header';
 import FooterNavbar from '../components/FooterNavbar';
 import Carrossel from '@/components/Carrossel';
@@ -16,23 +15,27 @@ interface MainPageProps {
     gamesData: Game[]
 }
 
-export default function MainPage({gamesData}: MainPageProps) {
+export default function MainPage({ gamesData }: MainPageProps) {
 
-    
- 
     return (
-        <div className=''>
+        <div className='    '>
             <Header></Header>
             <div className=''>
                 <Carrossel games={gamesData}></Carrossel>
             </div>
+
+            <div className='mt-8 sm:mt-16'> {/* Espaçamento para dispositivos móveis e maior espaçamento para telas maiores */}
+                <h1 className="text-2xl flex justify-center items-center mb-4">Jogos lançados recentemente</h1>
+                <Carrossel games={gamesData}></Carrossel>
+            </div>
+           
             <FooterNavbar></FooterNavbar>
         </div>
     )
 }
 
 export async function getServerSideProps() {
-    const gameInfo =  await getLatestGameInfo();
+    const gameInfo = await getLatestGameInfo();
 
     return {
         props: {
