@@ -17,6 +17,12 @@ module.exports = {
         "linear": {
           50:"linear-gradient(255deg, #1f1f1f, #2e2e2e, #3d3d3d);"
         },
+        "azul-infos": {
+          50:"#002664"
+        },
+        "azul-textos": {
+          50:"#35B4FB"
+        },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
