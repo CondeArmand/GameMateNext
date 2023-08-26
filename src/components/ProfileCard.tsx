@@ -21,20 +21,21 @@ export default function ProfileCard() {
                 <EditIcon className="text-white cursor-pointer hover:text-gray-400" />
               </div>
 
-              <div className='flex flex-col justify-center items-center p-10 text-2xl'>
+              <div className='flex flex-col justify-center items-center p-10 text-2xl text-white'>
                 <h3 className="text-center mb-2">Gabriel Marcos</h3>
                 <span >000001# <ContentCopyIcon className='text-white cursor-pointer hover:text-gray-400 mx-auto ' /></span>
                 
               </div>
               
-              <div className='flex flex-row justify-center items-center gap-2 text-2xl'>
+              <div className='flex flex-row justify-center items-center gap-2 text-2xl text-white'>
                 Level: <span>5</span>
               </div>
               <div className='flex justify-center items-center flex-col'>
-                <div className='flex flex-row justify-center items-center gap-2 text-2xl mt-8 w-56 h-16 bg-zinc-800'>
-                  <h3>Amigos: <span>7</span></h3>
+                <div className='flex flex-row justify-center items-center gap-2 text-2xl mt-8 w-56 h-16 bg-zinc-800 text-white'>
+                  <h3>Amigos: <span>7</span>
+                  </h3>
                 </div>
-                <div className='flex flex-row justify-center items-center gap-2 text-2xl mt-8 w-56 h-16 bg-zinc-800 '>
+                <div className='flex flex-row justify-center items-center gap-2 text-2xl mt-8 w-56 h-16 bg-zinc-800 text-white '>
                   <h3>Jogos: <span>48</span></h3>
                 </div>
               </div>
