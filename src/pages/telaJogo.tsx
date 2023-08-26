@@ -23,7 +23,7 @@ export default function TelaJogo() {
             
           </div>
           <h3 className="flex justify-center items-center mt-2 text-white">SOBRE</h3>
-          <div className="flex flex-col justify-center text-white">
+          <div className="flex flex-col justify-center md:ml-14 text-white">
             <h4>Lançamento: </h4>
             <h4>Metacritic: </h4>
             <h4>Produtora:</h4>
@@ -31,21 +31,16 @@ export default function TelaJogo() {
           </div>
 
           <div className="mt-5 ">
-            <h4 className="text-white">Generos:</h4>
-            <div className="flex flex-wrap">
+            <h4 className="text-white md:ml-14">Generos:</h4>
+            <div className="flex flex-wrap md:mt-2 md:ml-12">
               <span className="bg-azul-infos-50 rounded-full px-3 py-1 text-sm font-semibold text-azul-textos-50 mr-2 mb-2">Ação</span>
-              <span className="bg-azul-infos-50 rounded-full px-3 py-1 text-sm font-semibold text-azul-textos-50 mr-2 mb-2">Ação</span>
-              <span className="bg-azul-infos-50 rounded-full px-3 py-1 text-sm font-semibold text-azul-textos-50 mr-2 mb-2">Ação</span>
-              <span className="bg-azul-infos-50 rounded-full px-3 py-1 text-sm font-semibold text-azul-textos-50 mr-2 mb-2">Ação</span>
-              <span className="bg-azul-infos-50 rounded-full px-3 py-1 text-sm font-semibold text-azul-textos-50 mr-2 mb-2">Ação</span>
-              <span className="bg-azul-infos-50 rounded-full px-3 py-1 text-sm font-semibold text-azul-textos-50 mr-2 mb-2">Ação</span>
-              <span className="bg-azul-infos-50 rounded-full px-3 py-1 text-sm font-semibold text-azul-textos-50 mr-2 mb-2">Ação</span>
+              
             </div>
           </div>
 
           <div className="mt-5">
-            <h4>Plataformas:</h4>
-            <div className="flex flex-wrap">
+            <h4 className="md:ml-14">Plataformas:</h4>
+            <div className="flex flex-wrap md:ml-12 md:mt-2">
               <span className="bg-azul-infos-50 rounded-full px-3 py-1 text-sm font-semibold text-azul-textos-50 mr-2 mb-2">Xbox</span>
               <span className="bg-azul-infos-50 rounded-full px-3 py-1 text-sm font-semibold text-azul-textos-50 mr-2 mb-2">Playstation</span>
               <span className="bg-azul-infos-50 rounded-full px-3 py-1 text-sm font-semibold text-azul-textos-50 mr-2 mb-2">PC</span>
