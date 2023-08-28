@@ -9,6 +9,7 @@ export default function telaPerfil() {
       <div className="bg-blue-jeans-50 min-h-screen">
         <Header />
        <ProfileCard  />
+       <div className="h-16"></div>
         <FooterNavbar />
       </div>
     );

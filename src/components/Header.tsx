@@ -129,7 +129,7 @@ export default function PersistentDrawerLeft() {
         window.location.href = '/biblioteca'
         break;
       case 2:
-        console.log('Perfil')
+        window.location.href = '/telaPerfil'
         break;
       case 3:
         logout();

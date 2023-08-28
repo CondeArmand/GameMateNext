@@ -6,7 +6,7 @@ export default function ProfileCard() {
     <div className="w-screen h-screen bg-blue-jeans-50 flex flex-row flex-wrap p-3">
       <div className="mx-auto w-full md:w-2/3">
         <div
-          className="rounded-lg shadow-lg bg-gray-900 md:bg-gray-900  w-full flex flex-row flex-wrap p-3 antialiased"
+          className="rounded-3xl shadow-lg bg-gray-900 md:bg-gray-900  w-full flex flex-row flex-wrap p-3 antialiased"
         >
           <div className="md:w-1/3 w-full md:w-1/3 h-72 md:h-96">
             <img
@@ -38,6 +38,7 @@ export default function ProfileCard() {
                 <div className='flex flex-row justify-center items-center gap-2 text-2xl mt-8 w-56 h-16 bg-zinc-800 text-white '>
                   <h3>Jogos: <span>48</span></h3>
                 </div>
+                <div className='h-16'></div>
               </div>
             </div>
           </div>
