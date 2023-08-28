@@ -7,9 +7,10 @@ import SimpleCard from '../components/SimpleCard';
 const games = [
   {
     id: 1,
-    title: 'Def Jam: Fight for NY',
-    company: 'EA Canada',
-    imageUrl: 'https://images.igdb.com/igdb/image/upload/t_cover_big/co2lis.png',
+    title: 'Grand Theft Auto: Vice City The Definitive Edition',
+    company: 'Rockstar North',
+    imageUrl: 'https://images.igdb.com/igdb/image/upload/t_cover_big/co65yz.png',
+    
   },
   {
     id: 2,

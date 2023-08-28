@@ -4,7 +4,7 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 export default function ProfileCard() {
   return (
     <div className="w-screen h-screen bg-blue-jeans-50 flex flex-row flex-wrap p-3">
-      <div className="mx-auto w-full md:w-2/3">
+      <div className=" mx-auto w-full md:w-2/3">
         <div
           className="rounded-3xl shadow-lg bg-gray-900 md:bg-gray-900  w-full flex flex-row flex-wrap p-3 antialiased"
         >

@@ -15,7 +15,7 @@ interface GameCardProps {
 const SimpleCard: React.FC<GameCardProps> = ({ game }) => {
   return (
     <div className="flex justify-center md:p-3"> {/* Centralizar os cards */}
-      <div className="flex flex-col w-36 md:w-60 md:w-400 md:h-250 m-1 gap-1">
+      <div className="flex flex-col w-36 md:w-60 md:w-400 md:h-250 m-2 gap-1">
         <Image
           src={game.imageUrl}
           alt={`${game.title} Cover`}
