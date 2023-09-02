@@ -1,17 +1,17 @@
 const endpoint = 'https://api.igdb.com/v4/';
 
-export async function getGames() {
-    const data = await fetch(endpoint + 'search', {
-        method: 'POST',
-        body: 'fields *; search "The Witcher"; limit 10;',
-        headers: {
-            'Client-ID': process.env.IGDB_CLIENT_ID,
-            'Authorization': 'Bearer ' + process.env.IGDB_ACCESS_TOKEN,
-        }
-    } as RequestInit);
+// export async function getGames() {
+//     const data = await fetch(endpoint + 'search', {
+//         method: 'POST',
+//         body: 'fields *; search "The Witcher"; limit 10;',
+//         headers: {
+//             'Client-ID': process.env.IGDB_CLIENT_ID,
+//             'Authorization': 'Bearer ' + process.env.IGDB_ACCESS_TOKEN,
+//         }
+//     } as RequestInit);
 
-    return data.json();
-}
+//     return data.json();
+// }
 
 export async function getLatestGameInfo() {
     const today = new Date();
@@ -39,3 +39,22 @@ export async function getLatestGameInfo() {
 }
 
 
+export async function getGameInfo() {
+    const gameId = 1942;
+    const queryString = `
+        fields name, cover.image_id, genres.name, platforms.name, summary, screenshots.image_id, release_dates.human, rating, rating_count, involved_companies.company.name, web;
+        where id = ${gameId};
+    `;
+
+    const data = await fetch(endpoint + 'games', {
+        method: 'POST',
+        body: queryString,
+        headers: {
+            'Client-ID': process.env.IGDB_CLIENT_ID,
+            'Authorization': 'Bearer ' + process.env.IGDB_ACCESS_TOKEN,
+        }
+    } as RequestInit);
+
+    const gameInfo = await data.json();
+    return gameInfo;
+}

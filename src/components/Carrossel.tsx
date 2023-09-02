@@ -2,7 +2,8 @@ import React from "react";
 import Carousel from "nuka-carousel";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-
+import { useEffect, useState } from "react";
+import { useRouter } from 'next/router';
 interface Game {
     id: number,
     cover: {
@@ -15,9 +16,11 @@ interface CarrosselProps {
 }
 
 export default function Carrossel({ games }: CarrosselProps) {
-
+    const router = useRouter();
     function pickGameId(game: Game) {
-        console.log('GAME ID:', game.id);
+        
+        router.push(`/TelaJogo/${game.id}`);
+        
     }
 
     const responsiveSlidesToShow = {
