@@ -63,7 +63,7 @@ export default function Carrossel({ games }: CarrosselProps) {
                     key={game.id}
                 >
                     <img
-                        src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`}
+                        src={`https://images.igdb.com/igdb/image/upload/t_original/${game.cover.image_id}.jpg`}
                         alt={game.id.toString()}
                         onClick={() => pickGameId(game)}
                         className="cursor-pointer w-full "

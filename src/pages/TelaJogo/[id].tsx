@@ -44,9 +44,9 @@
                 {/* Render game information here */}
                 {gameInfo && gameInfo.cover && (
   <img
-    src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${gameInfo.cover.image_id}.jpg`}
+    src={`https://images.igdb.com/igdb/image/upload/t_original/${gameInfo.cover.image_id}.jpg`}
     alt={gameInfo.name}
-    className="w-full md:w-96 h-72 mx-auto md:ml-14"
+    className="w-full md:w-96  mx-auto md:ml-14"
   />
 )}
                 <h2 className="text-center mt-2 text-white">{gameInfo.name}</h2>
