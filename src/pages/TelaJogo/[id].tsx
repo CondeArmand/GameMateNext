@@ -1,5 +1,5 @@
-    import FooterNavbar from "@/components/FooterNavbar";
-    import Header from "@/components/Header";
+    import FooterNavbar from "@/components/Main/FooterNavbar";
+    import Header from "@/components/Main/Header";
     import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
     import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
     import Image from "next/image";

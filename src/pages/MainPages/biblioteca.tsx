@@ -1,8 +1,8 @@
 
-import Header from "@/components/Header";
+import Header from "@/components/Main/Header";
 import SearchPage from "./searchPage";
-import FooterNavbar from "@/components/FooterNavbar";
-import SimpleCard from "@/components/SimpleCard";
+import FooterNavbar from "@/components/Main/FooterNavbar";
+import SimpleCard from "@/components/Cards/SimpleCard";
 
 export default function Biblioteca(){
     return(

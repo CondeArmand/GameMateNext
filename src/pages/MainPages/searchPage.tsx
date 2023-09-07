@@ -1,7 +1,7 @@
 // pages/SearchPage.tsx
 import React from 'react';
 // import GameCard from '../components/GameCard';
-import SimpleCard from '../components/SimpleCard';
+import SimpleCard from '../../components/Cards/SimpleCard';
 
 
 const games = [

@@ -4,8 +4,8 @@ import {Button, Flex, FormControl, Heading, Input, Stack, Text,} from '@chakra-u
 import Link from 'next/link'
 import {useRef, useState} from "react";
 import useAuth from "@/hooks/useAuth";
-import Loading from "@/components/loading";
-import {SweetAlerts} from "@/components/SweetAlerts";
+import Loading from "@/components/Main/loading";
+import {SweetAlerts} from "@/components/Utils/SweetAlerts";
 
 
 export default function FormularioEsqueceuSenha() {

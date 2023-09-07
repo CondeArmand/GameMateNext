@@ -1,8 +1,8 @@
 import React from "react";
-import Header from "../components/Header";
-import FooterNavbar from "../components/FooterNavbar";
+import Header from "../../components/Main/Header";
+import FooterNavbar from "../../components/Main/FooterNavbar";
 import Image from "next/image";
-import ProfileCard from "@/components/ProfileCard";
+import ProfileCard from "@/components/Profile/ProfileCard";
 
 export default function telaPerfil() {
     return (

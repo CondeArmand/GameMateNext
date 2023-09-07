@@ -51,3 +51,5 @@ qodana.yaml
 src/pages/IGDB_API_TEST.tsx
 src/utils/test.js
 src/utils/steam/steam.js
+/src/utils/testAPi.js
+/src/pages/Admin/

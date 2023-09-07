@@ -41,7 +41,10 @@
     "sweetalert2": "^11.7.21",
     "sweetalert2-react-content": "^5.0.7",
     "tailwindcss": "3.3.3",
-    "typescript": "5.1.6"
+    "typescript": "5.1.6",
+    "@react-buddy/ide-toolbox-next": "^2.4.1",
+    "@react-buddy/palette-chakra-ui": "^2.3.1",
+    "@react-buddy/palette-mui": "^5.0.1"
   },
   "devDependencies": {
     "@types/react-slick": "^0.23.10"

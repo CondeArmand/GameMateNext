@@ -1,10 +1,10 @@
 import useAuth from "@/hooks/useAuth";
 import { FormEvent, useRef, useState } from "react";
-import ExibirSenha from "../components/ExibirSenha";
+import ExibirSenha from "../components/LoginAndRegister/ExibirSenha";
 import Link from "next/link";
-import GoogleButton from "@/components/GoogleButton";
-import Loading from "@/components/loading";
-import { SweetAlerts } from "@/components/SweetAlerts";
+import GoogleButton from "@/components/LoginAndRegister/GoogleButton";
+import Loading from "@/components/Main/loading";
+import { SweetAlerts } from "@/components/Utils/SweetAlerts";
 
 export default function Home() {
   const { login, loginOrRegisterWithGoogle } = useAuth();
@@ -33,7 +33,7 @@ export default function Home() {
     try {
       const email = emailRef.current?.value;
       await login(email, passwordRef);
-      window.location.href = "/mainPage";
+      window.location.href = "/MainPages/mainPage";
     } catch (error) {
       await SweetAlerts("error", "Erro", "Erro ao fazer login!");
     } finally {
@@ -115,7 +115,7 @@ export default function Home() {
 
               <div className="mb-6 flex items-center justify-end">
                 <Link
-                  href="/esqueceu"
+                  href="/src/pages/RegisterPages/esqueceu"
                   className="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600 hover:underline focus:underline active:underline"
                 >
                   Esqueceu a senha?
@@ -149,7 +149,7 @@ export default function Home() {
               </div>
               <h3 className="flex justify-center items-center gap-1">
                 Ou se preferir
-                <Link href="/cadastro" className="font-bold">
+                <Link href="/src/pages/RegisterPages/cadastro" className="font-bold">
                   Cadastre-se
                 </Link>
               </h3>

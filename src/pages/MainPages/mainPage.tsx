@@ -1,8 +1,8 @@
 import React from "react";
-import Header from '../components/Header';
-import FooterNavbar from '../components/FooterNavbar';
-import Carrossel from '@/components/Carrossel';
-import { getLatestGameInfo } from '@/utils/igdb/Request';
+import Header from '../../components/Main/Header';
+import FooterNavbar from '../../components/Main/FooterNavbar';
+import Carrossel from '@/components/Main/Carrossel';
+import {getLatestGameInfo} from '@/utils/igdb/Requests';
 
 interface Game {
     id: number,
@@ -12,10 +12,10 @@ interface Game {
 }
 
 interface MainPageProps {
-    gamesData: Game[]
+    gamesData: Game[],
 }
 
-export default function MainPage({ gamesData }: MainPageProps) {
+export default function MainPage({ gamesData}: MainPageProps) {
 
     return (
         <div className='    '>
@@ -36,10 +36,10 @@ export default function MainPage({ gamesData }: MainPageProps) {
 
 export async function getServerSideProps() {
     const gameInfo = await getLatestGameInfo();
-
+    
     return {
         props: {
-            gamesData: gameInfo
+            gamesData: gameInfo,
         }
     }
 }

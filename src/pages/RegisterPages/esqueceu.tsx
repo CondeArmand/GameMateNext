@@ -1,4 +1,4 @@
-import FormularioEsqueceuSenha from "@/components/FormularioEsqueceuSenha";
+import FormularioEsqueceuSenha from "@/components/LoginAndRegister/FormularioEsqueceuSenha";
 
 export default function EsqueceuSenha() {
 
