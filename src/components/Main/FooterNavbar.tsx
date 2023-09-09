@@ -14,19 +14,20 @@ export default function LabelBottomNavigation() {
         // Define o valor inicial com base no pathname atual
         const path = router.pathname;
         switch (path) {
-            case '/mainPage':
+            case '/MainPages/mainPage':
                 setValue('home');
                 break;
-            case '/biblioteca':
+            case '/MainPages/biblioteca':
                 setValue('biblioteca');
                 break;
-            case '/telaPerfil':
+            case '/MainPages/telaPerfil':
                 setValue('perfil');
                 break;
             default:
                 setValue(null);
         }
     }, [router.pathname]);
+    
 
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
         setValue(newValue);
@@ -36,16 +37,18 @@ export default function LabelBottomNavigation() {
     const handleMenuClick = (newValue: string) => {
         switch (newValue) {
             case 'home':
-                router.push('/mainPage');
+                router.push('/MainPages/mainPage');
                 break;
             case 'biblioteca':
-                router.push('/biblioteca');
+                router.push('/MainPages/biblioteca');
                 break;
             case 'perfil':
-                router.push('/telaPerfil');
+                router.push('/MainPages/telaPerfil');
                 break;
         }
     };
+    
+    
 
     return (
         <BottomNavigation
