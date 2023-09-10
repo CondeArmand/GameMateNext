@@ -7,6 +7,8 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -48,6 +50,7 @@ export default function SearchModal({ onGameSelect }: SearchModalProps) {
     const [searchQuery, setSearchQuery] = React.useState('');
     const [searchResults, setSearchResults] = React.useState<GameInfo[]>([]);
     const [selectedGame, setSelectedGame] = React.useState<GameInfo | null>(null);
+    const [isMobile, setIsMobile] = useState(false);
   
     const searchGame = async () => {
       try {
@@ -72,7 +75,11 @@ export default function SearchModal({ onGameSelect }: SearchModalProps) {
       handleClose();
     };
   
-    const isMobile = window.innerWidth <= 768;
+    useEffect(() => {
+      if (typeof window !== 'undefined') {
+        setIsMobile(window.innerWidth <= 768);
+      }
+    }, []);
   
     return (
       <div>
