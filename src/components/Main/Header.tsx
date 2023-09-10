@@ -23,6 +23,16 @@ import {blue} from '@mui/material/colors';
 import SearchModal from './SearchModal';
 import useAuth from '@/hooks/useAuth';
 
+
+interface GameInfo {
+    id: number;
+    name: string;
+    cover: {
+      image_id: string;
+    };
+    developer: string;
+  }
+
 const drawerWidth = 240;
 
 const Main = styled('main', {shouldForwardProp: (prop) => prop !== 'open'})<{
@@ -151,7 +161,9 @@ export default function PersistentDrawerLeft() {
 
                     </IconButton>
                     <Image src="/gamemate.png" alt="Logo" width={150} height={150}/>
-                    <SearchModal/>
+                    <SearchModal onGameSelect={function (game: GameInfo): void {
+                        throw new Error('Function not implemented.');
+                    } }/>
 
                 </Toolbar>
 

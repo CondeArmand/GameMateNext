@@ -70,9 +70,11 @@ export default function SearchModal({ onGameSelect }: SearchModalProps) {
   
     const handleGameSelect = (game: GameInfo) => {
       setSelectedGame(game);
-      setSearchQuery(''); // Reset o campo de pesquisa
+      // Reset o campo de pesquisa
+      setSearchResults([]);
       router.push(`/TelaJogo/${game.id}`);
       handleClose();
+      
     };
   
     useEffect(() => {
