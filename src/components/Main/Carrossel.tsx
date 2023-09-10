@@ -2,8 +2,8 @@ import React from "react";
 import Carousel from "nuka-carousel";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { useEffect, useState } from "react";
-import { useRouter } from 'next/router';
+import {useRouter} from 'next/router';
+
 interface Game {
     id: number,
     cover: {
@@ -15,12 +15,13 @@ interface CarrosselProps {
     games: Game[]
 }
 
-export default function Carrossel({ games }: CarrosselProps) {
+export default function Carrossel({games}: CarrosselProps) {
     const router = useRouter();
+
     function pickGameId(game: Game) {
-        
+
         router.push(`/TelaJogo/${game.id}`);
-        
+
     }
 
     const responsiveSlidesToShow = {
@@ -40,20 +41,20 @@ export default function Carrossel({ games }: CarrosselProps) {
             renderBottomCenterControls={null}
             slidesToShow={responsiveSlidesToShow.medium}
             slideIndex={initialSlideIndex}
-            renderCenterLeftControls={({ previousSlide }) => (
+            renderCenterLeftControls={({previousSlide}) => (
                 <button
                     onClick={previousSlide}
                     className="hidden sm:block"
                 >
-                    <ArrowBackIosIcon className='text-white' sx={{ fontSize: 35 }} />
+                    <ArrowBackIosIcon className='text-white' sx={{fontSize: 35}}/>
                 </button>
             )}
-            renderCenterRightControls={({ nextSlide }) => (
+            renderCenterRightControls={({nextSlide}) => (
                 <button
                     onClick={nextSlide}
                     className="hidden sm:block"
                 >
-                    <ArrowForwardIosIcon className="text-white" sx={{ fontSize: 35 }} />
+                    <ArrowForwardIosIcon className="text-white" sx={{fontSize: 35}}/>
                 </button>
             )}
         >

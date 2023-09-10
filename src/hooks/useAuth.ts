@@ -8,6 +8,7 @@ import {
 } from "@firebase/auth";
 import {addDoc, collection,} from "firebase/firestore";
 import Player from "@/core/Player";
+import {addUserDocument} from "@/core/Services/RegisterService/Register";
 
 // Define o idioma padrão do auth
 auth.useDeviceLanguage();
@@ -35,17 +36,13 @@ export default function useAuth() {
 
     // Funções de ‘cadastro’
     async function register(name: string, username: string, email: string, password: string) {
-
         try {
-
             const res = await createUserWithEmailAndPassword(auth, email, password)
             const user = res.user
 
-            const player = new Player(user.uid, name, username, email, user.photoURL, [], [])
+            const player = new Player(user.uid, name, username, email, '')
 
-            await addDoc(collection(db, "players"), {
-                player: player.toJSON()
-            })
+            await addUserDocument(player)
 
             return 'Sucess'
 
@@ -56,6 +53,9 @@ export default function useAuth() {
                 return 'Email inválido!'
             } else if (e.code === "auth/weak-password") {
                 return 'Senha fraca!'
+            } else {
+                await auth.currentUser?.delete()
+                return e.message;
             }
         }
     }

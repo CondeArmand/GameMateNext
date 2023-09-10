@@ -85,7 +85,7 @@ export default class Player {
 
     toJSON(): any {
         return {
-            id: this.id,
+            _id: this.id,
             name: this.name,
             username: this.username,
             email: this.email,

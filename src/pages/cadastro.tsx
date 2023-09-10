@@ -1,8 +1,8 @@
 import useAuth from "@/hooks/useAuth";
 import {SetStateAction, useRef, useState} from "react";
 import Image from "next/image";
-import ExibirSenha from "../../components/LoginAndRegister/ExibirSenha";
-import FormularioCadastro from "../../components/LoginAndRegister/FormularioCadastro";
+import ExibirSenha from "../components/LoginAndRegister/ExibirSenha";
+import FormularioCadastro from "../components/LoginAndRegister/FormularioCadastro";
 import Link from "next/link";
 import Loading from "@/components/Main/loading";
 import {SweetAlerts} from "@/components/Utils/SweetAlerts";
@@ -63,7 +63,7 @@ export default function Cadastro() {
                 throw new Error(res);
             }
             await SweetAlerts('success', 'Sucesso', 'Cadastro realizado com sucesso!');
-            window.location.href = '/teste';
+            // window.location.href = '/teste';
         } catch (error: any) {
             await SweetAlerts('error', 'Erro', error.message);
         } finally {

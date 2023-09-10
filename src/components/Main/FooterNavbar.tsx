@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useRouter } from 'next/router';
+import {useRouter} from 'next/router';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import PersonIcon from '@mui/icons-material/Person';
@@ -27,7 +27,7 @@ export default function LabelBottomNavigation() {
                 setValue(null);
         }
     }, [router.pathname]);
-    
+
 
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
         setValue(newValue);
@@ -47,35 +47,35 @@ export default function LabelBottomNavigation() {
                 break;
         }
     };
-    
-    
+
 
     return (
         <BottomNavigation
-        sx={{
-           position: 'fixed',
-            bottom: 0,
-            left: '50%',
-            transform: 'translateX(-50%)',
-            width: '100%',
-            maxWidth: 500   }}
+            sx={{
+                position: 'fixed',
+                bottom: 0,
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: '100%',
+                maxWidth: 500
+            }}
             value={value}
             onChange={handleChange}
         >
             <BottomNavigationAction
                 label="Biblioteca"
                 value="biblioteca"
-                icon={<SportsEsportsIcon />}
+                icon={<SportsEsportsIcon/>}
             />
             <BottomNavigationAction
                 label="Home"
                 value="home"
-                icon={<HomeIcon />}
+                icon={<HomeIcon/>}
             />
             <BottomNavigationAction
                 label="Perfil"
                 value="perfil"
-                icon={<PersonIcon />}
+                icon={<PersonIcon/>}
             />
         </BottomNavigation>
     );
