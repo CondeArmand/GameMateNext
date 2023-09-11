@@ -5,6 +5,7 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Image from "next/image";
 import {useEffect, useState} from "react";
 import {useRouter} from 'next/router';
+import Loading from "@/components/Main/loading";
 
 
 export default function TelaJogo() {
@@ -103,7 +104,7 @@ export default function TelaJogo() {
 
                     </div>
                 ) : (
-                    <h1>Carregando, aguarde pacientemente</h1>
+                    <Loading isLoading={true}/>
                 )}
                 <div className="w-full md:w-8/12 bg-blue-jeans-50 p-4">
                     {/* Conditional rendering of the screenshot section */}

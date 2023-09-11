@@ -1,5 +1,5 @@
 import Header from "@/components/Main/Header";
-import SearchPage from "./searchPage";
+
 import FooterNavbar from "@/components/Main/FooterNavbar";
 
 export default function Biblioteca() {
@@ -9,7 +9,7 @@ export default function Biblioteca() {
             <>
                 <Header/>
 
-                <SearchPage/>
+                
                 <FooterNavbar/>
             </>
         </div>
