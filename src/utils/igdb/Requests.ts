@@ -1,3 +1,5 @@
+import { format, addDays } from 'date-fns';
+
 const endpoint = 'https://api.igdb.com/v4/';
 
 // export async function getGames() {
@@ -13,29 +15,51 @@ const endpoint = 'https://api.igdb.com/v4/';
 //     return data.json();
 // }
 
+const apiCache = new Map();
+
 export async function getLatestGameInfo() {
+  try {
+    // Verifica se os dados estão em cache
+    if (apiCache.has('latestGames')) {
+      return apiCache.get('latestGames');
+    }
+
     const today = new Date();
-    const nextWeek = new Date(today);
-    nextWeek.setDate(nextWeek.getDate() + 7); // Assuming you want games released in the next week
+    const nextWeek = addDays(today, 7); // Adiciona 7 dias à data atual
 
     const queryString = `
-        fields id, cover.image_id;
-        where release_dates.date >= ${Math.floor(today.getTime() / 1000)} &
-              release_dates.date <= ${Math.floor(nextWeek.getTime() / 1000)};
-        limit 10;
+      fields id, cover.image_id;
+      where release_dates.date >= ${Math.floor(today.getTime() / 1000)} &
+            release_dates.date <= ${Math.floor(nextWeek.getTime() / 1000)};
+      limit 10;
     `;
 
-    const data = await fetch(endpoint + 'games', {
-        method: 'POST',
-        body: queryString,
-        headers: {
-            'Client-ID': process.env.IGDB_CLIENT_ID,
-            'Authorization': 'Bearer ' + process.env.IGDB_ACCESS_TOKEN,
-        }
+    const response = await fetch(endpoint + 'games', {
+      method: 'POST',
+      body: queryString,
+      headers: {
+        'Client-ID': process.env.IGDB_CLIENT_ID,
+        'Authorization': 'Bearer ' + process.env.IGDB_ACCESS_TOKEN,
+      },
     } as RequestInit);
 
-    const gameInfo = await data.json();
+    if (!response.ok) {
+      throw new Error('Erro ao buscar informações dos jogos: ' + response.statusText);
+    }
+
+    const gameInfo = await response.json();
+
+    // Armazena em cache os resultados da API por um período curto de tempo (por exemplo, 5 minutos)
+    apiCache.set('latestGames', gameInfo);
+    setTimeout(() => {
+      apiCache.delete('latestGames');
+    }, 60 * 60 * 1000); // 5 minutos em milissegundos
+
     return gameInfo;
+  } catch (error) {
+    console.error('Erro ao buscar informações dos jogos:', error);
+    throw error; // Lança o erro para que seja tratado posteriormente
+  }
 }
 
 
